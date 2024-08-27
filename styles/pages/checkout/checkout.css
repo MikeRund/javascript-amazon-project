@@ -134,6 +134,10 @@
   }
 }
 
+.quantity-input {
+  width: 30px;
+}
+
 .delivery-options-title {
   font-weight: 700;
   margin-bottom: 10px;
