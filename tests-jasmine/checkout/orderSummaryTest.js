@@ -49,6 +49,22 @@ describe('test suite: renderOrderSummary', () => {
         expect(
             document.querySelector(`.js-product-quantity-${productId2}`).innerText
         ).toContain('Quantity: 1');
+
+        expect(
+            document.querySelector(`.js-product-name-${productId1}`).innerText
+        ).toEqual("Black and Gray Athletic Cotton Socks - 6 Pairs");
+
+        expect(
+            document.querySelector(`.js-product-name-${productId2}`).innerText
+        ).toEqual("Intermediate Size Basketball");
+
+        expect(
+            document.querySelector(`.js-product-price-${productId1}`).innerText
+        ).toEqual('£10.90');
+
+        expect(
+            document.querySelector(`.js-product-price-${productId2}`).innerText
+        ).toEqual('£20.95');
     });
 
     it('removes product', () => {
@@ -66,7 +82,39 @@ describe('test suite: renderOrderSummary', () => {
             document.querySelector(`.js-cart-item-container-${productId2}`)
         ).not.toEqual(null);
 
+        expect(
+            document.querySelector(`.js-product-name-${productId2}`).innerText
+        ).toEqual("Intermediate Size Basketball");
+
+        expect(
+            document.querySelector(`.js-product-price-${productId2}`).innerText
+        ).toEqual('£20.95');
+
         expect(cart.length).toEqual(1);
+
         expect(cart[0].id).toEqual(productId2);
     });
+
+    it('updates delivery option in summary', () => {
+        document.querySelector(`.js-delivery-option-${3}-${productId1}`).click();
+
+        expect(
+            document.querySelector(`.js-delivery-option-input-${3}-${productId1}`).checked
+        ).toBe(true);
+
+        expect(cart.length).toEqual(2);
+
+        expect(cart[0].id).toEqual(productId1);
+
+        expect(cart[0].deliveryOptionId).toEqual('3');
+
+        expect(
+            document.querySelector('.js-payment-summary-shipping').innerHTML
+        ).toContain('£6.98');
+
+        expect(
+            document.querySelector('.js-payment-summary-total').innerHTML
+        ).toContain('£54.70');
+
+    })
 });
