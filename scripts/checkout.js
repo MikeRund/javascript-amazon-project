@@ -4,9 +4,12 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 
 async function loadPage() {
-    console.log('load page');
+    try {
+        await loadProductsFetch()
+    } catch (error) {
+        console.log(error);
+    }
 
-    await loadProductsFetch()
 
     await new Promise(() => {
         renderOrderSummary();
@@ -14,10 +17,7 @@ async function loadPage() {
         renderCheckoutHeader();
     })
 }
-loadPage().then((value) => {
-    console.log('next steps');
-    console.log(value);
-});
+loadPage();
 
 // loadProductsFetch().then(() => {
 //     renderOrderSummary();
