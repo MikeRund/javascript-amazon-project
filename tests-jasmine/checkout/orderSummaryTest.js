@@ -25,11 +25,11 @@ describe('test suite: renderOrderSummary', () => {
         // Mock local storage getItem
         spyOn(localStorage, 'getItem').and.callFake(() => {
             return JSON.stringify([{
-                id: productId1,
+                productId: productId1,
                 quantity: 2,
                 deliveryOptionId: "1"
             }, {
-                id: productId2,
+                productId: productId2,
                 quantity: 1,
                 deliveryOptionId: "2"
             }]);
@@ -99,7 +99,7 @@ describe('test suite: renderOrderSummary', () => {
 
         expect(cart.length).toEqual(1);
 
-        expect(cart[0].id).toEqual(productId2);
+        expect(cart[0].productId).toEqual(productId2);
     });
 
     it('updates delivery option in summary', () => {
@@ -111,7 +111,7 @@ describe('test suite: renderOrderSummary', () => {
 
         expect(cart.length).toEqual(2);
 
-        expect(cart[0].id).toEqual(productId1);
+        expect(cart[0].productId).toEqual(productId1);
 
         expect(cart[0].deliveryOptionId).toEqual('3');
 

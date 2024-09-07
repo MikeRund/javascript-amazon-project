@@ -90,7 +90,7 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
     }
 
     cart.forEach((cartItem) => {
-        if (productId === cartItem.id) {
+        if (productId === cartItem.productId) {
             matchingItem = cartItem;
         }
     });
