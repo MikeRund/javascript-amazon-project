@@ -3,11 +3,27 @@ import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 
-loadProductsFetch().then(() => {
-    renderOrderSummary();
-    renderPaymentSummary();
-    renderCheckoutHeader();
+async function loadPage() {
+    console.log('load page');
+
+    await loadProductsFetch()
+
+    await new Promise(() => {
+        renderOrderSummary();
+        renderPaymentSummary();
+        renderCheckoutHeader();
+    })
+}
+loadPage().then((value) => {
+    console.log('next steps');
+    console.log(value);
 });
+
+// loadProductsFetch().then(() => {
+//     renderOrderSummary();
+//     renderPaymentSummary();
+//     renderCheckoutHeader();
+// });
 
 // loadProducts(() => {
 // });
