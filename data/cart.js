@@ -20,6 +20,17 @@ export function loadFromStorage() {
     }
 }
 
+export async function loadCartFetch() {
+    try {
+        const response = await fetch('https://supersimplebackend.dev/cart');
+        const text = await response.text();
+        console.log(text);
+        return text;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export function addToCart(productId, quantity) {
     let matchingItem;
 

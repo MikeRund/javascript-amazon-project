@@ -2,10 +2,11 @@ import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
+import { loadCartFetch } from "../data/cart.js";
 
 async function loadPage() {
     try {
-        await loadProductsFetch()
+        await loadProductsFetch();
     } catch (error) {
         console.log(error);
     }
@@ -18,6 +19,7 @@ async function loadPage() {
     })
 }
 loadPage();
+loadCartFetch();
 
 // loadProductsFetch().then(() => {
 //     renderOrderSummary();
