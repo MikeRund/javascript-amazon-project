@@ -31,6 +31,11 @@ export async function loadCartFetch() {
     }
 }
 
+export function resetCart() {
+    cart = [];
+    saveToStorage();
+}
+
 export function addToCart(productId, quantity) {
     let matchingItem;
 

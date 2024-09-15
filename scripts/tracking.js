@@ -23,7 +23,7 @@ function renderTrackingPage() {
     const deliveryTime = dayjs(deliveryDate);
     const percentProgress = ((today - orderTime) / (deliveryTime - orderTime)) * 100;
 
-    console.log(matchingOrder);
+    console.log(percentProgress);
 
     let trackingHTML = `
         <div class="order-tracking">
