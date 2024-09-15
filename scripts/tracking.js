@@ -17,7 +17,13 @@ function renderTrackingPage() {
 
     const quantity = getQuantity(matchingOrder, productId);
 
-    console.log(quantity);
+    // For progress bar
+    const today = dayjs();
+    const orderTime = dayjs(matchingOrder.orderTime);
+    const deliveryTime = dayjs(deliveryDate);
+    const percentProgress = ((today - orderTime) / (deliveryTime - orderTime)) * 100;
+
+    console.log(matchingOrder);
 
     let trackingHTML = `
         <div class="order-tracking">
@@ -40,19 +46,22 @@ function renderTrackingPage() {
             <img class="product-image" src="${matchingProduct.image}">
 
             <div class="progress-labels-container">
-                <div class="progress-label">
+                <div class="progress-label 
+                ${percentProgress < 50 ? 'current-status' : ''}">
                 Preparing
                 </div>
-                <div class="progress-label current-status">
+                <div class="progress-label 
+                 ${percentProgress >= 50 && percentProgress < 100 ? 'current-status' : ''}">
                 Shipped
                 </div>
-                <div class="progress-label">
+                <div class="progress-label
+                 ${percentProgress === 100 ? 'current-status' : ''}">
                 Delivered
                 </div>
             </div>
 
             <div class="progress-bar-container">
-                <div class="progress-bar"></div>
+                <div class="progress-bar" style="width: ${percentProgress}%;"></div>
             </div>
         </div>
     `;
