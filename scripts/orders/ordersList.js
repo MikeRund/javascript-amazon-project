@@ -5,8 +5,6 @@ import { getProduct, loadProductsFetch } from "../../data/products.js";
 import { addToCart } from "../../data/cart.js";
 import { renderOrdersHeader } from "./ordersHeader.js";
 
-console.log(typeof (orders));
-
 export function renderOrdersList() {
     let ordersSummaryHTML = '<div class="order-container">';
 

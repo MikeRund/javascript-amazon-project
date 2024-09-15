@@ -25,3 +25,36 @@ export function addOrder(order) {
 function saveToStorage() {
     localStorage.setItem('orders', JSON.stringify(orders));
 }
+
+export function getOrder(orderId) {
+    let matchingOrder;
+
+    orders.forEach((order) => {
+        if (order.id === orderId) {
+            matchingOrder = order;
+        }
+    });
+    return matchingOrder;
+}
+
+export function getDeliveryDate(order, productId) {
+    let deliveryDate;
+
+    order.products.forEach((product) => {
+        if (product.productId === productId) {
+            deliveryDate = product.estimatedDeliveryTime;
+        }
+    });
+    return deliveryDate;
+}
+
+export function getQuantity(order, productId) {
+    let quantity;
+
+    order.products.forEach((product) => {
+        if (product.productId === productId) {
+            quantity = product.quantity;
+        }
+    })
+    return quantity;
+}
