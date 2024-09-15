@@ -17,6 +17,8 @@ function renderTrackingPage() {
 
     const quantity = getQuantity(matchingOrder, productId);
 
+    const deliveredMessage = today < deliveryTime ? 'Arriving on' : 'Delivered on';
+
     // For progress bar
     const today = dayjs();
     const orderTime = dayjs(matchingOrder.orderTime);
@@ -32,7 +34,7 @@ function renderTrackingPage() {
             </a>
 
             <div class="delivery-date">
-                Arriving on ${dateStr}
+                ${deliveredMessage} ${dateStr}
             </div>
 
             <div class="product-info">

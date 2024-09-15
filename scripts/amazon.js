@@ -128,7 +128,7 @@ document.querySelector('.js-search-button').addEventListener('click', () => {
 
 });
 
-document.querySelector('.js-search-input').addEventListener('keydown', (key) => {
+document.querySelector('.js-search-input').addEventListener('keydown ', (key) => {
     if (key.key === 'Enter') {
         const search = document.querySelector('.js-search-input').value;
         window.location.href = `amazon.html?search=${search}`;
